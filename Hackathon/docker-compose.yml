@@ -1,0 +1,23 @@
+# MongoDB para desarrollo local.
+# Requiere un archivo .env en esta carpeta (ver .env.example).
+services:
+  mongo:
+    image: mongo:7
+    container_name: wa-agent-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:?Define MONGO_USER en el archivo .env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?Define MONGO_PASSWORD en el archivo .env}
+    ports:
+      # Solo accesible desde esta máquina, no desde la red.
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo_data:

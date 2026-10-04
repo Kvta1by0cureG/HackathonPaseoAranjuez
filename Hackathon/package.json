@@ -1,0 +1,19 @@
+{
+  "name": "whatsapp-agent-app",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Agente de IA en WhatsApp + Mini WebApp por niveles",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix webapp install",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:webapp": "npm --prefix webapp run dev",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test",
+    "build": "npm --prefix webapp run build",
+    "lint": "npx --yes eslint@10.1.0 ."
+  }
+}

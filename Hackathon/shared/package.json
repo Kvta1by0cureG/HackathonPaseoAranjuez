@@ -1,0 +1,8 @@
+{
+  "name": "whatsapp-agent-shared",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Reglas de niveles compartidas entre el backend y la webapp",
+  "type": "module",
+  "main": "constants.js"
+}
